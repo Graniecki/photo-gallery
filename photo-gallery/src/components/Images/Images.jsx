@@ -3,6 +3,8 @@ import './Images.css';
 import { Pagination } from '../Pagination';
 import { Settings } from '../Settings';
 
+import likesPhotos from '../likesPhotos';
+
 export const Images = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -23,6 +25,22 @@ export const Images = () => {
 
   const currentImages = images.slice(0, imagesPerPage);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const addLikePhoto = (event) => {
+    const imageBlock = event.target.closest('.image');
+    const src = imageBlock.querySelector('img').src;
+    const heart = imageBlock.querySelector('.heart');
+
+    heart.style.opacity = 1;
+    setTimeout(() => {
+      heart.style.opacity = 0;
+    }, 300);
+
+    if (likesPhotos.some(photo => photo === src)) {
+      return;
+    }
+
+    likesPhotos.push(src);
+  };
 
   if (loading) {
     return <h2>Loading ...</h2>;
@@ -36,8 +54,13 @@ export const Images = () => {
       />
       <div className="images">
         {currentImages.map(image => (
-          <div className="image">
+          <div
+            key={image.id}
+            className="image"
+            onDoubleClick={addLikePhoto}
+          >
             <img src={image.download_url} alt="something-beauty" />
+            <span className="heart">&#10084;</span>
           </div>
         ))}
       </div>
