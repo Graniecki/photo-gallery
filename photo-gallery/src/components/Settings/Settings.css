@@ -1,0 +1,17 @@
+.settings {
+  padding: 20px;
+}
+
+.image-count {
+  border: none;
+  outline-width: 0;
+  background-color: #E3F6F6;
+}
+
+.settings label,
+.image-count {
+  font-family: 'Poller One', cursive;
+  -webkit-text-stroke: 1px #65D1D1;
+  color: #E3F6F6;
+  font-size: 25px;
+}
