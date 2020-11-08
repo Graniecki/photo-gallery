@@ -7,12 +7,10 @@
 }
 
 .likes-photo {
-  margin-top: 20px;
+  margin: 20px 0 20px 3%;
   position: relative;
   width: 30%;
   height: 300px;
-  margin-left: 3%;
-  margin-bottom: 20px;
   transition: box-shadow 500ms;
   transition: opacity 800ms;
 }
@@ -62,5 +60,12 @@
 
   .no-likes {
     font-size: 35px;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .likes-photo {
+    width: 45%;
+    margin: 20px 0 10px 3%;
   }
 }
