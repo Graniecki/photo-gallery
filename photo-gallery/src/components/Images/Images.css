@@ -38,3 +38,12 @@
   opacity: 0;
   transition: opacity 300ms;
 }
+
+.loading {
+  text-align: center;
+  font-family: 'Dancing Script', cursive;
+  font-size: 45px;
+  -webkit-text-stroke: 1px #65D1D1;
+  color: #E3F6F6;
+
+}

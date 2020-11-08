@@ -3,13 +3,18 @@ import './Settings.css';
 
 export const Settings = ({ imagesPerPage, setPostsPerPage }) => {
   const changeCount = (event) => {
-    const { value } = event.target;
+    event.preventDefault();
+
+    const { value } = event.target.querySelector('.image-count');
 
     setPostsPerPage(+value);
   };
 
   return (
-    <form className="settings">
+    <form
+      className="settings"
+      onSubmit={changeCount}
+    >
       <label htmlFor="picture-count">
         Images per page:
       </label>
@@ -19,10 +24,14 @@ export const Settings = ({ imagesPerPage, setPostsPerPage }) => {
         id="picture-count"
         min="1"
         max="100"
-        placeholder="max - 100"
-        value={imagesPerPage}
-        onChange={changeCount}
+        defaultValue={imagesPerPage}
       />
+      <button
+        className="submit-button"
+        type="submit"
+      >
+        Save
+      </button>
     </form>
   );
 };

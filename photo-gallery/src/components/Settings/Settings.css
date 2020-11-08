@@ -1,17 +1,38 @@
 .settings {
-  padding: 20px;
+  padding: 20px 0 20px 0;
+  width: 80%;
+  margin: auto;
 }
 
 .image-count {
   border: none;
   outline-width: 0;
   background-color: #E3F6F6;
+  text-align: center;
 }
 
 .settings label,
-.image-count {
+.image-count,
+.submit-button {
   font-family: 'Poller One', cursive;
   -webkit-text-stroke: 1px #65D1D1;
   color: #E3F6F6;
   font-size: 25px;
+}
+
+.settings label {
+  margin-left: 3%;
+}
+
+.submit-button {
+  border: none;
+  background-color: #E3F6F6;
+  border-radius: 15px;
+  border: 1px solid #65D1D1;
+  transition: background-color 500ms;
+}
+
+.submit-button:hover {
+  box-shadow: 3px 3px 8px gray;
+  background-color: #65D1D1;
 }

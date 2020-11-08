@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Images.css';
+
 import { Pagination } from '../Pagination';
 import { Settings } from '../Settings';
-
-import likesPhotos from '../likesPhotos';
+import { Context } from '../Context';
 
 export const Images = () => {
   const [images, setImages] = useState([]);
@@ -25,6 +25,8 @@ export const Images = () => {
 
   const currentImages = images.slice(0, imagesPerPage);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const { likes, setLikes } = useContext(Context);
+
   const addLikePhoto = (event) => {
     const imageBlock = event.target.closest('.image');
     const src = imageBlock.querySelector('img').src;
@@ -35,15 +37,15 @@ export const Images = () => {
       heart.style.opacity = 0;
     }, 300);
 
-    if (likesPhotos.some(photo => photo === src)) {
+    if (likes.some(photo => photo === src)) {
       return;
     }
 
-    likesPhotos.push(src);
+    setLikes(current => [src, ...current]);
   };
 
   if (loading) {
-    return <h2>Loading ...</h2>;
+    return <h2 className="loading">Loading ...</h2>;
   }
 
   return (
