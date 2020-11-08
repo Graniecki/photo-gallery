@@ -9,7 +9,7 @@ export const Navigation = () => {
   return (
     <nav className="navigation">
       <ul className="navigation-list">
-        <Link to="/favourite">
+        <Link to="">
           <li
             className={classNames({
               "navigation-item": true,

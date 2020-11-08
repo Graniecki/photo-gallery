@@ -18,7 +18,7 @@ function App() {
           <Navigation />
         </div>
         <Switch>
-          <Route exact path="/photo-gallery" component={Images} />
+          <Route exact path="" component={Images} />
           <Route exact path="/favourite" component={Favourite} />
         </Switch>
       </Router>
