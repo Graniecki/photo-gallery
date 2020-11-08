@@ -50,3 +50,17 @@
 .no-likes .smile {
   font-size: 35px;
 }
+
+@media only screen and (max-width: 480px) {
+  .likes-photo {
+    width: 100%;
+  }
+
+  .remove-photo {
+    font-size: 5vw;
+  }
+
+  .no-likes {
+    font-size: 35px;
+  }
+}

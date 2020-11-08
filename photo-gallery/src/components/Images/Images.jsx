@@ -43,6 +43,11 @@ export const Images = () => {
 
     setLikes(current => [src, ...current]);
   };
+  const fullScreen = (event) => {
+    // const image = event.target.parentElement;
+
+    
+  };
 
   if (loading) {
     return <h2 className="loading">Loading ...</h2>;

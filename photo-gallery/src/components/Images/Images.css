@@ -1,7 +1,6 @@
 .images {
   display: flex;
   flex-wrap: wrap;
-  text-align: center;
   width: 80%;
   margin: auto;
 }
@@ -22,7 +21,7 @@
 
 .image:hover {
   box-shadow: 8px 8px 10px gray;
-  transform: scale(1.15);
+  transform: scale(1.1);
 }
 
 .image img {
@@ -45,5 +44,14 @@
   font-size: 45px;
   -webkit-text-stroke: 1px #65D1D1;
   color: #E3F6F6;
+}
 
+@media only screen and (max-width: 480px) {
+  .image {
+    width: 100%;
+  }
+
+  .heart {
+    font-size: 10vw;
+  }
 }

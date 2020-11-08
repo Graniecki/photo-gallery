@@ -12,6 +12,7 @@
   list-style-type: none;
   display: inline-block;
   width: 50%;
+  border-radius: 25px;
   padding: 10px 0 10px 0;
   text-align: center;
   font-family: 'Dancing Script', cursive;
@@ -27,4 +28,11 @@
 .navigation-list a {
   -webkit-text-stroke: 1px #65D1D1;
   color: #E3F6F6;
+}
+
+@media only screen and (max-width: 480px) {
+  .navigation-item {
+    padding: 5px 0 5px 0;
+    font-size: 35px;
+  }
 }

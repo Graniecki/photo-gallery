@@ -10,22 +10,32 @@
 }
 
 .pagination-item {
-  list-style-type: none;
-  cursor: default;
-  display: inline-block;
   width: 40px;
   height: 40px;
+  display: inline-block;
+  list-style-type: none;
+  cursor: default;
   text-align: center;
   font-size: 20px;
+  font-family: 'Poller One', cursive;
+  -webkit-text-stroke: 1px #65D1D1;
+  color: #E3F6F6;
   line-height: 200%;
   border-radius: 15px;
   border-bottom: 1px solid #65D1D1;
   transition: background-color 500ms;
-  font-family: 'Poller One', cursive;
-  -webkit-text-stroke: 1px #65D1D1;
-  color: #E3F6F6;
 }
 
 .pagination-item:hover {
   background-color: #65D1D1;
+}
+
+@media only screen and (max-width: 480px) {
+  .pagination-list {
+    width: 60%;
+  }
+
+  .pagination-item {
+    width: 20%;
+  }
 }
