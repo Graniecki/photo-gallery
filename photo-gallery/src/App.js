@@ -7,6 +7,7 @@ import { Favourite } from './components/Favourite';
 import { FullScreen } from './components/FullScreen';
 
 function App() {
+  const [favouriteOn, setFavouriteOn] = useState(false);
   const [likes, setLikes] = useState([]);
   const [fullScreenImg, setFullScreenImg] = useState('');
   const [openFullScreen, setOpenFullScreen] = useState(false);
@@ -19,22 +20,30 @@ function App() {
   return (
     <div className="App">
       <h1>Photo gallery</h1>
-      <Navigation />
+      <Navigation
+        setFavouriteOn={setFavouriteOn}
+      />
       <FullScreen
         fullScreenImg={fullScreenImg}
         openFullScreen={openFullScreen}
         closeFullScreen={closeFullScreen}
       />
-      <Images
-        likes={likes}
-        setLikes={setLikes}
-        setFullScreenImg={setFullScreenImg}
-        setOpenFullScreen={setOpenFullScreen}
-      />
-      <Favourite
-        likes={likes}
-        setLikes={setLikes}
-      />
+      {!favouriteOn
+        ? (
+          <Images
+            likes={likes}
+            setLikes={setLikes}
+            setFullScreenImg={setFullScreenImg}
+            setOpenFullScreen={setOpenFullScreen}
+          />
+        )
+        : (
+          <Favourite
+            likes={likes}
+            setLikes={setLikes}
+          />
+        )
+      }
     </div>
   );
 }

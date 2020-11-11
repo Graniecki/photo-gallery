@@ -2,14 +2,22 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import './Navigation.css';
 
-export const Navigation = () => {
+export const Navigation = ({ setFavouriteOn }) => {
   const [selected, setSelected] = useState(true);
+  const switchOnGallery = () => {
+    setSelected(true);
+    setFavouriteOn(false);
+  };
+  const switchOnFavourite = () => {
+    setSelected(false);
+    setFavouriteOn(true);
+  };
 
   return (
     <nav className="navigation">
       <ul className="navigation-list">
         <li
-          onClick={() => setSelected(true)}
+          onClick={switchOnGallery}
           className={classNames({
             "navigation-item": true,
             "selected": selected,
@@ -18,7 +26,7 @@ export const Navigation = () => {
           Gallery
         </li>
         <li
-          onClick={() => setSelected(false)}
+          onClick={switchOnFavourite}
           className={classNames({
             "navigation-item": true,
             "selected": !selected,
