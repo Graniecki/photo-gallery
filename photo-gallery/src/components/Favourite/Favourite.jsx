@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './Favourite.css';
 
-import { Context } from '../Context';
-
-export const Favourite = () => {
-  const { likes, setLikes } = useContext(Context);
+export const Favourite = ({ likes, setLikes }) => {
   const removePhoto = (event) => {
-    const { src } = event.target.nextSibling;
+    const removeIcon = event.target;
+    const { src } = removeIcon.nextSibling;
+    const likedPhoto = removeIcon.parentElement;
 
-    event.target.parentElement.style.opacity = 0;
+    likedPhoto.style.opacity = 0;
     setTimeout(() => {
       setLikes(likes.filter(photo => photo !== src));
     }, 400);

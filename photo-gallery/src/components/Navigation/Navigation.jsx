@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import './Navigation.css';
 
@@ -9,28 +8,24 @@ export const Navigation = () => {
   return (
     <nav className="navigation">
       <ul className="navigation-list">
-        <Link to="/photo-gallery">
-          <li
-            className={classNames({
-              "navigation-item": true,
-              "selected": selected,
-            })}
-            onClick={() => setSelected(true)}
-          >
-            Gallery
-          </li>
-        </Link>
-        <Link to="/favourite">
-          <li
-            className={classNames({
-              "navigation-item": true,
-              "selected": !selected,
-            })}
-            onClick={() => setSelected(false)}
-          >
-            Favourite
-          </li>
-        </Link>
+        <li
+          onClick={() => setSelected(true)}
+          className={classNames({
+            "navigation-item": true,
+            "selected": selected,
+          })}
+        >
+          Gallery
+        </li>
+        <li
+          onClick={() => setSelected(false)}
+          className={classNames({
+            "navigation-item": true,
+            "selected": !selected,
+          })}
+        >
+          Favourite
+        </li>
       </ul>
     </nav>
   );

@@ -1,28 +1,41 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
 import { Navigation } from './components/Navigation';
 import { Images } from './components/Images';
 import { Favourite } from './components/Favourite';
-import { Context } from './components/Context';
+import { FullScreen } from './components/FullScreen';
 
 function App() {
   const [likes, setLikes] = useState([]);
+  const [fullScreenImg, setFullScreenImg] = useState('');
+  const [openFullScreen, setOpenFullScreen] = useState(false);
+  const closeFullScreen = (event) => {
+    if (event.currentTarget === event.target) {
+      setOpenFullScreen(false);
+    }
+  };
 
   return (
-    <Context.Provider value={{ likes, setLikes }}>
-      <Router>
-        <div className="App">
-          <h1>Photo gallery</h1>
-          <Navigation />
-        </div>
-        <Switch>
-          <Route exact path="/photo-gallery" component={Images} />
-          <Route exact path="/favourite" component={Favourite} />
-        </Switch>
-      </Router>
-    </Context.Provider>
+    <div className="App">
+      <h1>Photo gallery</h1>
+      <Navigation />
+      <FullScreen
+        fullScreenImg={fullScreenImg}
+        openFullScreen={openFullScreen}
+        closeFullScreen={closeFullScreen}
+      />
+      <Images
+        likes={likes}
+        setLikes={setLikes}
+        setFullScreenImg={setFullScreenImg}
+        setOpenFullScreen={setOpenFullScreen}
+      />
+      <Favourite
+        likes={likes}
+        setLikes={setLikes}
+      />
+    </div>
   );
 }
 

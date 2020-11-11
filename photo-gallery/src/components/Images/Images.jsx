@@ -1,11 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Images.css';
 
 import { Pagination } from '../Pagination';
 import { Settings } from '../Settings';
-import { Context } from '../Context';
 
-export const Images = () => {
+export const Images = ({
+  likes,
+  setLikes,
+  setFullScreenImg,
+  setOpenFullScreen
+}) => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,14 +29,13 @@ export const Images = () => {
 
   const currentImages = images.slice(0, imagesPerPage);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  const { likes, setLikes } = useContext(Context);
 
   const addLikePhoto = (event) => {
-    const imageBlock = event.target.closest('.image');
-    const src = imageBlock.querySelector('img').src;
-    const heart = imageBlock.querySelector('.heart');
+    const src = event.currentTarget.querySelector('img').src;
+    const heart = event.currentTarget.querySelector('.heart');
 
     heart.style.opacity = 1;
+
     setTimeout(() => {
       heart.style.opacity = 0;
     }, 300);
@@ -44,9 +47,11 @@ export const Images = () => {
     setLikes(current => [src, ...current]);
   };
   const fullScreen = (event) => {
-    // const image = event.target.parentElement;
+    const image = event.target.parentElement;
+    const { src } = image.querySelector('img');
 
-    
+    setFullScreenImg(src);
+    setOpenFullScreen(true);
   };
 
   if (loading) {
@@ -68,6 +73,12 @@ export const Images = () => {
           >
             <img src={image.download_url} alt="something-beauty" />
             <span className="heart">&#10084;</span>
+            <span
+              className="fullscreen-icon"
+              onClick={fullScreen}
+            >
+              &#x26F6;
+            </span>
           </div>
         ))}
       </div>

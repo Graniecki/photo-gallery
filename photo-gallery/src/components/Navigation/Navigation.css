@@ -17,17 +17,14 @@
   text-align: center;
   font-family: 'Dancing Script', cursive;
   font-size: 45px;
+  -webkit-text-stroke: 1px #65D1D1;
+  color: #E3F6F6;
   transition: background-color 500ms;
   cursor: default;
 }
 
 .selected {
   background-color: #65D1D1;
-}
-
-.navigation-list a {
-  -webkit-text-stroke: 1px #65D1D1;
-  color: #E3F6F6;
 }
 
 @media only screen and (max-width: 480px) {
