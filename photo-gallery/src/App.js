@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import useLocalStorage from './components/useLocalStorage';
 import './App.css';
 
 import { Navigation } from './components/Navigation';
@@ -8,9 +9,9 @@ import { FullScreen } from './components/FullScreen';
 
 function App() {
   const [favouriteOn, setFavouriteOn] = useState(false);
-  const [likes, setLikes] = useState([]);
   const [fullScreenImg, setFullScreenImg] = useState('');
   const [openFullScreen, setOpenFullScreen] = useState(false);
+  const [likes, setLikes] = useLocalStorage('photo', []);
 
   const closeFullScreen = (event) => {
     if (event.currentTarget === event.target) {

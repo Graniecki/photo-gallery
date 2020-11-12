@@ -43,7 +43,7 @@ export const Gallery = ({
       return;
     }
 
-    setLikes(current => [src, ...current]);
+    setLikes([src, ...likes]);
   };
 
   const fullScreen = (event) => {
