@@ -30,6 +30,10 @@
   background-color: #65D1D1;
 }
 
+.selected {
+  background-color: #65D1D1;
+}
+
 @media only screen and (max-width: 480px) {
   .pagination-list {
     width: 60%;

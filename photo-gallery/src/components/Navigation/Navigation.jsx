@@ -1,35 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import './Navigation.css';
 
-export const Navigation = ({ setFavouriteOn }) => {
-  const [selected, setSelected] = useState(true);
-  const switchOnGallery = () => {
-    setSelected(true);
-    setFavouriteOn(false);
-  };
-  const switchOnFavourite = () => {
-    setSelected(false);
-    setFavouriteOn(true);
-  };
-
+export const Navigation = ({ favouriteOn, setFavouriteOn }) => {
   return (
     <nav className="navigation">
       <ul className="navigation-list">
         <li
-          onClick={switchOnGallery}
+          onClick={() => setFavouriteOn(false)}
           className={classNames({
             "navigation-item": true,
-            "selected": selected,
+            "selected": !favouriteOn,
           })}
         >
           Gallery
         </li>
         <li
-          onClick={switchOnFavourite}
+          onClick={() => setFavouriteOn(true)}
           className={classNames({
             "navigation-item": true,
-            "selected": !selected,
+            "selected": favouriteOn,
           })}
         >
           Favourite

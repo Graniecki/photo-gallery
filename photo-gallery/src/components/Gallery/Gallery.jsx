@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import useLocalStorage from '../useLocalStorage';
 import './Gallery.css';
 
 import { Pagination } from '../Pagination';
@@ -12,11 +13,10 @@ export const Gallery = ({
 }) => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [imagesPerPage, setPostsPerPage] = useState(15);
+  const [currentPage, setCurrentPage] = useLocalStorage('current-page', 1);
+  const [imagesPerPage, setImagesPerPage] = useLocalStorage('images-per-page', 15);
   const url = `https://picsum.photos/v2/list?page=${currentPage}&limit=100`;
   const currentImages = images.slice(0, imagesPerPage);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -62,7 +62,7 @@ export const Gallery = ({
     <>
       <Settings
         imagesPerPage={imagesPerPage}
-        setPostsPerPage={setPostsPerPage}
+        setImagesPerPage={setImagesPerPage}
       />
       <div className="images">
         {currentImages.map(image => (
@@ -83,7 +83,8 @@ export const Gallery = ({
         ))}
       </div>
       <Pagination
-        paginate={paginate}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
       />
     </>
   );

@@ -1,7 +1,8 @@
 import React from 'react';
+import classNames from 'classnames';
 import './Pagination.css';
 
-export const Pagination = ({ paginate }) => {
+export const Pagination = ({ currentPage, setCurrentPage }) => {
   const pageNumbers = [...Array(10).keys()];
 
   return (
@@ -10,8 +11,11 @@ export const Pagination = ({ paginate }) => {
         {pageNumbers.map(number => (
           <li
             key={number}
-            className="pagination-item"
-            onClick={() => paginate(number + 1)}
+            className={classNames({
+              "pagination-item": true,
+              "selected": currentPage === (number + 1)
+            })}
+            onClick={() => setCurrentPage(number + 1)}
           >
             {number + 1}
           </li>

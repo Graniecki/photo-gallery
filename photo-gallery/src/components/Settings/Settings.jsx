@@ -1,13 +1,13 @@
 import React from 'react';
 import './Settings.css';
 
-export const Settings = ({ imagesPerPage, setPostsPerPage }) => {
+export const Settings = ({ imagesPerPage, setImagesPerPage }) => {
   const changeCount = (event) => {
     event.preventDefault();
 
     const { value } = event.target.querySelector('.image-count');
 
-    setPostsPerPage(+value);
+    setImagesPerPage(+value);
   };
 
   return (

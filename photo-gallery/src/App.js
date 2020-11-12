@@ -8,10 +8,10 @@ import { Favourite } from './components/Favourite';
 import { FullScreen } from './components/FullScreen';
 
 function App() {
-  const [favouriteOn, setFavouriteOn] = useState(false);
   const [fullScreenImg, setFullScreenImg] = useState('');
   const [openFullScreen, setOpenFullScreen] = useState(false);
   const [likes, setLikes] = useLocalStorage('photo', []);
+  const [favouriteOn, setFavouriteOn] = useLocalStorage('favourite-on', false);
 
   const closeFullScreen = (event) => {
     if (event.currentTarget === event.target) {
@@ -23,6 +23,7 @@ function App() {
     <div className="App">
       <h1>Photo gallery</h1>
       <Navigation
+        favouriteOn={favouriteOn}
         setFavouriteOn={setFavouriteOn}
       />
       <FullScreen
