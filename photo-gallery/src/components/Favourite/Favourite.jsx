@@ -1,7 +1,12 @@
 import React from 'react';
 import './Favourite.css';
 
-export const Favourite = ({ likes, setLikes }) => {
+export const Favourite = ({
+  likes,
+  setLikes,
+  setFullScreenImg,
+  setOpenFullScreen
+}) => {
   const removePhoto = (event) => {
     const removeIcon = event.target;
     const { src } = removeIcon.nextSibling;
@@ -12,45 +17,48 @@ export const Favourite = ({ likes, setLikes }) => {
       setLikes(likes.filter(photo => photo !== src));
     }, 400);
   };
-  const visibleRemove = (event) => {
-    const likesPhoto = event.target.parentElement;
-    const removePhoto = likesPhoto.querySelector('.remove-photo');
 
-    removePhoto.style.opacity = 1;
-  };
-  const unvisibleRemove = (event) => {
-    const likesPhoto = event.target.parentElement;
-    const removePhoto = likesPhoto.querySelector('.remove-photo');
+  const fullScreen = (event) => {
+    const image = event.target.parentElement;
+    const { src } = image.querySelector('img');
 
-    removePhoto.style.opacity = 0;
+    setFullScreenImg(src);
+    setOpenFullScreen(true);
   };
 
   return (
     <>
-      <div className="likes-photos">
-        {likes.map(photo => (
-          <div
-            key={photo}
-            className="likes-photo"
-            onMouseOver={visibleRemove}
-            onMouseLeave={unvisibleRemove}
-          >
-            <div
-              className="remove-photo"
-              onClick={removePhoto}
-            >
-              &#10006;
-            </div>
-            <img src={photo} alt="something-beauty" />
+      {likes.length === 0
+        ? (
+          <div className="no-likes">
+            <span className="title">No favorite photos yet!</span>
+            <span className="smile">&#129320;</span>
           </div>
-        ))}
-      </div>
-      {likes.length === 0 && (
-        <div className="no-likes">
-          <span className="title">No favorite photos yet!</span>
-          <span className="smile">&#129320;</span>
-        </div>
-      )}
+        )
+        : (
+          <div className="likes-photos">
+            {likes.map(photo => (
+              <div
+                key={photo}
+                className="likes-photo"
+              >
+                <div
+                  className="remove-photo"
+                  onClick={removePhoto}
+                >
+                  &#10006;
+                </div>
+                <img src={photo} alt="something-beauty" />
+                <span
+                  className="fullscreen-icon"
+                  onClick={fullScreen}
+                >
+                  &#x26F6;
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
     </>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 import { Navigation } from './components/Navigation';
-import { Images } from './components/Images';
+import { Gallery } from './components/Gallery';
 import { Favourite } from './components/Favourite';
 import { FullScreen } from './components/FullScreen';
 
@@ -11,6 +11,7 @@ function App() {
   const [likes, setLikes] = useState([]);
   const [fullScreenImg, setFullScreenImg] = useState('');
   const [openFullScreen, setOpenFullScreen] = useState(false);
+
   const closeFullScreen = (event) => {
     if (event.currentTarget === event.target) {
       setOpenFullScreen(false);
@@ -30,7 +31,7 @@ function App() {
       />
       {!favouriteOn
         ? (
-          <Images
+          <Gallery
             likes={likes}
             setLikes={setLikes}
             setFullScreenImg={setFullScreenImg}
@@ -41,6 +42,8 @@ function App() {
           <Favourite
             likes={likes}
             setLikes={setLikes}
+            setFullScreenImg={setFullScreenImg}
+            setOpenFullScreen={setOpenFullScreen}
           />
         )
       }

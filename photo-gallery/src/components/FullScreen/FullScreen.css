@@ -9,7 +9,15 @@
   z-index: 1;
 }
 
+.full-screen:hover {
+  cursor: zoom-out;
+}
+
 .full-screen img {
   max-width: 90%;
   height: 90%;
+}
+
+.full-screen img:hover {
+  cursor: default;
 }

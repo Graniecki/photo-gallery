@@ -19,6 +19,11 @@
   box-shadow: 8px 8px 10px gray;
 }
 
+.likes-photo:hover .remove-photo,
+.likes-photo:hover .fullscreen-icon {
+  opacity: 1;
+}
+
 .likes-photo img {
   max-width: 100%;
   height: 100%;
@@ -33,6 +38,19 @@
   opacity: 0;
   transition: opacity 500ms;
 }
+
+.fullscreen-icon {
+  position: absolute;
+  bottom: 5px;
+  right: 7px;
+  color: gray;
+  opacity: 0;
+  font-size: 2vw;
+  user-select: none;
+  cursor: zoom-in;
+  transition: opacity 300ms;
+}
+
 .no-likes {
   text-align: center;
   padding-top: 14%;

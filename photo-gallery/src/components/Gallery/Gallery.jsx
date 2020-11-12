@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './Images.css';
+import './Gallery.css';
 
 import { Pagination } from '../Pagination';
 import { Settings } from '../Settings';
 
-export const Images = ({
+export const Gallery = ({
   likes,
   setLikes,
   setFullScreenImg,
@@ -15,6 +15,8 @@ export const Images = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [imagesPerPage, setPostsPerPage] = useState(15);
   const url = `https://picsum.photos/v2/list?page=${currentPage}&limit=100`;
+  const currentImages = images.slice(0, imagesPerPage);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -26,9 +28,6 @@ export const Images = ({
 
     fetchImages();
   }, [currentPage]);
-
-  const currentImages = images.slice(0, imagesPerPage);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const addLikePhoto = (event) => {
     const src = event.currentTarget.querySelector('img').src;
@@ -46,6 +45,7 @@ export const Images = ({
 
     setLikes(current => [src, ...current]);
   };
+
   const fullScreen = (event) => {
     const image = event.target.parentElement;
     const { src } = image.querySelector('img');
